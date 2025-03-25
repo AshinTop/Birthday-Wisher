@@ -3,9 +3,9 @@ import './birthday.css'
 const Wish = ({ name }) => {
   return (
     <div>
-       <div className="emoji-text" role="img" aria-label="party">
+       <span className="emoji-text" role="img" aria-label="party">
           🎉
-        </div>
+        </span>
       <div className="wish-message">
         HAPPY BIRTHDAY
         <br/> 
