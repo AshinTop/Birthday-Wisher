@@ -72,7 +72,7 @@ When the countdown reaches zero, the birthday wish page loads automatically!
 
 ## 🎆 New Animated Birthday Wish Page!
 
-![Wish Video](screenshots/wish.mp4)
+![Wish Video](screenshots/wish.png)
 
 ## 🎨 Customization & Styling
 
