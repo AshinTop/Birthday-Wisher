@@ -1,46 +1,90 @@
-# 🎉Birthday Wisher with Countdown!🎉
+# 🎉 Birthday Wisher with Countdown! 🎂🎊
 
-Made with React with Hooks.
+A simple and fun birthday countdown and wishing app built with **React Hooks**.
 
-## Getting started
+🔗 **Live Demo:** [Birthday Wisher](https://iwangsiyi.com)
 
-You can view a live demo over at https://birthday-wisher.netlify.app/
+## 🚀 Getting Started
 
-To get It running locally:
+To run this project locally, follow these steps:
 
-- Clone this repo
-- `npm install` to install all req'd dependencies
-- `npm start` to start the local server (this project uses create-react-app)
+### 1️⃣ Clone the repository
 
-## Usage:
+```sh
+git clone https://github.com/AshinTop/Birthday-Wisher.git
 
-Visit [https://birthday-wisher.netlify.app/]()
+cd Birthday-Wisher
+```
 
-Click on Generate Link
-or Head to [https://birthday-wisher.netlify.app/generate]()
+### 2️⃣ Install dependencies
 
-Enter the `name , day , month of birthday`
+```sh
+npm install
+```
 
-![ScreenShot of Form](screenshots/generate.png)
+### 3️⃣ Start the development server
 
-Click on Generate Link
+```sh
+npm start
+```
 
-You Can see a Link being generated Copy or Visit the link by Clicking on the Button
+### 4️⃣ Build the project
 
-And There You Go ! 🎉
+```sh
+npm run build
+```
+
+## ✨ Updates & Features
+
+- **🎨 Updated UI**: Changed the background color of the **"Generate Page → Select Options"** section.
+- **🛠 Bug Fix**: Resolved the issue where the **wish page** was not displaying on birthdays.
+- **🎆 New Feature**: Added a brand-new **Birthday Wish Page** with an animated **birthday cake fireworks** effect!
+
+## 🎈 How to Use
+
+1️⃣ Visit 👉 Visit [Birthday Wisher](https://iwangsiyi.com)
+
+2️⃣ Click "Generate Link" or go directly to 👉 [Generate Page](https://iwangsiyi.com/generate)
+
+3️⃣ Enter the Name, Day, and Month of the birthday 🎂
 
 ![ScreenShot of Form](screenshots/duma.png)
 
-## ScreenShot of Coutdown Timer⏲️
+4️⃣ Click "**Generate Link**"
+
+5️⃣ Copy the generated link or click the button to visit it
+
+6️⃣ On the birthday, the countdown disappears, and a beautiful **birthday wish page** appears! 🎊
+
+![ScreenShot of Form](screenshots/generate.png)
+
+## Countdown Timer Preview
+
+Here's a preview of the countdown feature:
 
 ![ScreenShot of Countdown](screenshots/countdown.png)
 
-## Birthday Wisher🎂
+## 🎂 Birthday Wisher in Action
 
-Loads this Page Instead of Coutdown on the Birthday
+When the countdown reaches zero, the birthday wish page loads automatically!
+
 ![ScreenShot of Countdown](screenshots/wishPage.png)
 
-It's Fully Responsive and you change styles in the `app.css`
+## 🎆 New Animated Birthday Wish Page!
 
-Wishing Component Page : `Wish.jsx`
-Countdown Compenent Page : `Countdown.jsx`
+<video src="screenshots/wish.mp4" controls="controls" width="500" height="300"></video>
+
+## 🎨 Customization & Styling
+
+- The app is fully responsive 📱💻
+
+- Modify styles in app.css
+
+- Main components:
+  - Wishing Component: Wish.jsx
+  - Countdown Timer Component: Countdown.jsx
+
+---
+
+Enjoy and make birthdays extra special! 🎉🎂🥳
+Give a ⭐ if you like this project! 😊

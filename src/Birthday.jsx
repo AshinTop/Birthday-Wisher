@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Countdown from './Countdown';
 import githubLogo from './githubLogo.svg';
 import { Link } from 'react-router-dom';
+import WishCake from './WishCake';
 
 const Birthday = ({ name, day, month }) => {
   // useState Hooks
@@ -14,10 +15,9 @@ const Birthday = ({ name, day, month }) => {
   });
 
   if (name === undefined || day === undefined || month === undefined) {
-    // This is if not enough params are provided
-    name = 'Deepankar'; // Name of the Person
-    month = 6; // Month of the Birthday
-    day = 14; // Day of the Birthday
+    name = 'Cici'; // Name of the Person
+    month = 3; // Month of the Birthday
+    day = 30; // Day of the Birthday
   }
 
   // get current time
@@ -25,20 +25,15 @@ const Birthday = ({ name, day, month }) => {
   // get current year
   const currentYear = currentTime.getFullYear();
 
-  // Getting the Birthday in Data Object
-  // WE subtract 1 from momnth ; Months start from 0 in Date Object
-  // Bithday Boolean
+  // Birthday Boolean
   const isItBday =
-    currentTime.getDate() === day && currentTime.getMonth() === month - 1;
+    currentTime.getDate() ===  Number(day) && currentTime.getMonth() ===  Number(month) - 1;
 
   useEffect(() => {
-    setInterval(() => {
+    const intervalId = setInterval(() => {
       const countdown = () => {
-        // Getting the Current Date
         const dateAtm = new Date();
 
-        // if the Birthday has passed
-        // then set the Birthday countdown for next year
         let birthdayDay = new Date(currentYear, month - 1, day);
         if (dateAtm > birthdayDay) {
           birthdayDay = new Date(currentYear + 1, month - 1, day);
@@ -46,12 +41,9 @@ const Birthday = ({ name, day, month }) => {
           birthdayDay = new Date(currentYear, month - 1, day);
         }
 
-        // Getitng Current Time
         const currentTime = dateAtm.getTime();
-        // Getting Birthdays Time
         const birthdayTime = birthdayDay.getTime();
 
-        // Time remaining for the Birthday
         const timeRemaining = birthdayTime - currentTime;
 
         let seconds = Math.floor(timeRemaining / 1000);
@@ -63,17 +55,28 @@ const Birthday = ({ name, day, month }) => {
         minutes %= 60;
         hours %= 24;
 
-        // Setting States
-        setState((prevState) => ({
-          ...prevState,
-          seconds,
-          minutes,
-          hours,
-          days,
-          isItBday,
-        }));
-        // console.log(`${days}:${hours}:${minutes}:${seconds} , ${isItBday}`);
+        setState((prevState) => {
+          // Only update state if there is a change
+          if (
+            prevState.seconds !== seconds ||
+            prevState.minutes !== minutes ||
+            prevState.hours !== hours ||
+            prevState.days !== days ||
+            prevState.isItBday !== isItBday
+          ) {
+            return {
+              ...prevState,
+              seconds,
+              minutes,
+              hours,
+              days,
+              isItBday,
+            };
+          }
+          return prevState;
+        });
       };
+
       if (!isItBday) {
         countdown();
       } else {
@@ -82,36 +85,33 @@ const Birthday = ({ name, day, month }) => {
           isItBday: true,
         }));
       }
+
     }, 1000);
-  }, [currentYear, day, isItBday, month]);
+
+    // Cleanup on component unmount
+    return () => clearInterval(intervalId);
+  }, [currentYear, day, month, isItBday]);
 
   let birth = new Date(currentYear, month - 1, day);
   const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',
   ];
   let monthBday = monthNames[birth.getMonth()];
 
   return (
     <div className='page'>
-      <Countdown countdownData={state} name={name} />
-      {!isItBday && (
+      {isItBday ? (
+        // 生日当天显示祝福
+        <WishCake name={name} />
+      ) : (
+        // 其他时间显示倒计时
         <>
+          <Countdown countdownData={state} name={name} />
           <div className='birthdate'>
             Birth-Date: {day} {monthBday} {currentYear}
           </div>
           <div className='credits'>
-            <a href='https://github.com/Deep-Codes'>
+            <a href='https://github.com/AshinTop/Birthday-Wisher' target='_blank'>
               <img src={githubLogo} alt='Github-Logo' className='github-logo' />
             </a>
           </div>
